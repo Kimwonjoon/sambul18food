@@ -22,8 +22,7 @@ def food(name: str):
     ts = time.strftime('%Y-%m-%d %H:%M:%S')
 
     # 음식 이름과 시간을 csv 형태로 저장 -> 경로 : ~/code/data/food.csv
-    home_dir = os.path.expanduser("~")
-    path = f"{home_dir}/code/data/food.csv"
+    path = "/code/data/food.csv"
     os.makedirs(os.path.dirname(path), exist_ok=True)
 
     df = pd.DataFrame({'time' : [ts], 'food' : [name]})
