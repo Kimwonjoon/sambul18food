@@ -23,7 +23,7 @@ def food(name: str):
     # 음식 이름과 시간을 csv 형태로 저장 -> 경로 : ~/code/data/food.csv
     home_dir = os.path.expanduser("~")
     path = f"{home_dir}/code/data/food.csv"
-    df = pd.DataFrame({'time' : ts, 'food' : name})
+    df = pd.DataFrame({'time' : [ts], 'food' : [name]})
 
     df.to_csv(path, index = False)
     return {'time' : ts, 'food' : name} # return값은 아무렇게나 해도 됨
