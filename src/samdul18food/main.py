@@ -8,8 +8,8 @@ import pandas as pd
 app = FastAPI()
 
 origins = [
-    #"http://localhost:8899", # 로컬
-    "https://sambul18food.web.app/",
+    "http://localhost:8899", # 로컬
+    "https://sambul18food.web.app", # 맨 끝에 / 있으면 안돌아감!!!!
 ]
 
 app.add_middleware(
