@@ -8,10 +8,7 @@ import pandas as pd
 app = FastAPI()
 
 origins = [
-    "http://localhost.tiangolo.com",
-    "https://localhost.tiangolo.com",
-    "http://localhost",
-    "http://localhost:8899",
+    "http://localhost:8899", # 여기도 아마존으로 변경
 ]
 
 app.add_middleware(
