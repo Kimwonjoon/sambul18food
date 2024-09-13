@@ -8,7 +8,8 @@ import pandas as pd
 app = FastAPI()
 
 origins = [
-    "http://localhost:8899", # 여기도 아마존으로 변경
+    #"http://localhost:8899", # 로컬
+    "https://sambul18food.web.app/",
 ]
 
 app.add_middleware(
