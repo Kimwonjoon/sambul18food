@@ -23,9 +23,14 @@ def food(name: str):
 
     # 음식 이름과 시간을 csv 형태로 저장 -> 경로 : ~/code/data/food.csv
     path = "/code/data/food.csv"
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-
-    df = pd.DataFrame({'time' : [ts], 'food' : [name]})
-    df.to_csv(path, index = False)
+    if os.path.exists(path): # 파일이 이미 있다면
+        data = pd.read_csv(path)
+        df = pd.DataFrame({'time' : [ts], 'food' : [name]})
+        new_df = pd.concat([data, df], ignore_index = True)
+        new_df.to_csv(path, index = False)
+    else: # 없다면
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        df = pd.DataFrame({'time' : [ts], 'food' : [name]})
+        df.to_csv(path, index = False)
 
     return {'time' : ts, 'food' : name} # return값은 아무렇게나 해도 됨
