@@ -4,22 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>삼둘푸드</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #888;
+        }
+
+        .footer a {
+            color: #28a745;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h1>음식 이름 입력</h1>
-    <form id="foodForm">
-        <label for="foodName">음식 이름: </label>
-        <input type="text" id="foodName" name="foodName" required>
-        <button type="submit">저장</button>
-    </form>
+    <div class="container">
+        <h1>음식 이름 입력</h1>
+        <form id="foodForm">
+            <label for="foodName">음식 이름: </label>
+            <input type="text" id="foodName" name="foodName" required placeholder="음식 이름을 입력하세요">
+            <button type="submit">저장</button>
+        </form>
+        <div class="footer">
+            <p>Powered by <a href="https://firebase.google.com/">Firebase</a></p>
+        </div>
+    </div>
 
     <script>
         document.getElementById("foodForm").addEventListener("submit", function(event) {
             event.preventDefault(); // 폼 기본 제출 방지
 
             const foodName = document.getElementById("foodName").value;
-			    const url = `https://api.samdulshop.shop/n18/food?name=${encodeURIComponent(foodName)}`; // ip를 아마존으로 아마존 -> LB -> FastAPI
-			    //const url = `http://127.0.0.1:8765/n18/food?name=${encodeURIComponent(foodName)}`; // ip를 아마존으로 아마존 -> LB -> FastAPI
+            const url = `https://api.samdulshop.shop/n18/food?name=${encodeURIComponent(foodName)}`;
 
             fetch(url, {
                 method: 'GET',
@@ -30,27 +111,24 @@
         });
     </script>
     <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+        // Firebase 초기화 스크립트
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-analytics.js";
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyAG_2HoBXGpk1M8Mhm2k7ORSgZ3CYdhLik",
-    authDomain: "sambul18food.firebaseapp.com",
-    projectId: "sambul18food",
-    storageBucket: "sambul18food.appspot.com",
-    messagingSenderId: "75012111777",
-    appId: "1:75012111777:web:b248b89b4154c5fed91fe0",
-    measurementId: "G-FXDGBHCLNP"
-  };
+        const firebaseConfig = {
+            apiKey: "AIzaSyAG_2HoBXGpk1M8Mhm2k7ORSgZ3CYdhLik",
+            authDomain: "sambul18food.firebaseapp.com",
+            projectId: "sambul18food",
+            storageBucket: "sambul18food.appspot.com",
+            messagingSenderId: "75012111777",
+            appId: "1:75012111777:web:b248b89b4154c5fed91fe0",
+            measurementId: "G-FXDGBHCLNP"
+        };
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+        // Firebase 초기화
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
     </script>
 </body>
 </html>
+
