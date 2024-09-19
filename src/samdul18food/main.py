@@ -48,7 +48,7 @@ def food(name: str):
                              user='food',
                              password='1234',
                              database='fooddb',
-                             port=os.getenv("MY_PORT", 33306),
+                             port=int(os.getenv("MY_PORT", 33306)),
                              cursorclass=pymysql.cursors.DictCursor)
     sql = "INSERT INTO `foodhistory`(username, foodname, dt) VALUES (%s, %s, %s)"
     with connection:
